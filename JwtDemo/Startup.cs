@@ -56,8 +56,8 @@ namespace JwtDemo
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "µæÂû API",
-                    Description = "µæÂû JWT ªº½d¨Ò API",
+                    Title = "JWT Demo",
+                    Description = "µæÂû¹Á¸Õ JWT ªº½d¨Ò API",
                     TermsOfService = new Uri("https://igouist.github.io/"),
                     Contact = new OpenApiContact
                     {
