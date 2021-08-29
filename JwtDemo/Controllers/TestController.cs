@@ -22,14 +22,6 @@ namespace JwtDemo.Controllers
         }
 
         /// <summary>
-        /// 登入後才能查詢呦！
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Authorize]
-        public string Get() => User.Identity.Name;
-
-        /// <summary>
         /// 登入
         /// </summary>
         /// <param name="parameter">The login.</param>
@@ -44,5 +36,13 @@ namespace JwtDemo.Controllers
         // DEMO 都給你登入成功啦
         private bool IsLoginSuccess(LoginParameter parameter)
             => true;
+
+        /// <summary>
+        /// 登入後才能查詢呦！
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize]
+        public string Get() => User.Identity.Name;
     }
 }
