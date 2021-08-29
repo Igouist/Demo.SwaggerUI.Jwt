@@ -38,7 +38,7 @@ namespace JwtDemo.Controllers
             => true;
 
         /// <summary>
-        /// 登入後才能查詢呦！
+        /// 查詢（登入後才能查詢呦！）
         /// </summary>
         /// <returns></returns>
         [HttpGet]

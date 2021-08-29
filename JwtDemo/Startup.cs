@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace JwtDemo
 {
@@ -45,6 +49,29 @@ namespace JwtDemo
                             Configuration.GetValue<string>("JwtSettings:SignKey")))
                     };
                 });
+
+            services.AddSwaggerGen(c =>
+            {
+                // API 服務簡介
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "菜雞 API",
+                    Description = "菜雞 JWT 的範例 API",
+                    TermsOfService = new Uri("https://igouist.github.io/"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Igouist",
+                        Email = string.Empty,
+                        Url = new Uri("https://igouist.github.io/about/"),
+                    }
+                });
+
+                // 讀取 XML 檔案產生 API 說明
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +93,12 @@ namespace JwtDemo
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
         }
     }

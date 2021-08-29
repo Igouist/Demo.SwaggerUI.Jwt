@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JwtDemo</name>
+    </assembly>
+    <members>
+        <member name="M:JwtDemo.Controllers.TestController.SignIn(JwtDemo.Models.Parameter.LoginParameter)">
+            <summary>
+            登入
+            </summary>
+            <param name="parameter">The login.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JwtDemo.Controllers.TestController.Get">
+            <summary>
+            登入後才能查詢呦！
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JwtDemo.Models.Parameter.LoginParameter">
+            <summary>
+            登入參數
+            </summary>
+        </member>
+        <member name="P:JwtDemo.Models.Parameter.LoginParameter.Account">
+            <summary>
+            帳號
+            </summary>
+        </member>
+        <member name="P:JwtDemo.Models.Parameter.LoginParameter.Pwd">
+            <summary>
+            密碼
+            </summary>
+        </member>
+    </members>
+</doc>
