@@ -4,6 +4,16 @@
         <name>JwtDemo</name>
     </assembly>
     <members>
+        <member name="T:JwtDemo.Controllers.TestController">
+            <summary>
+            測試站台
+            </summary>
+        </member>
+        <member name="M:JwtDemo.Controllers.TestController.#ctor(JwtDemo.Helpers.JwtHelper,Microsoft.Extensions.Logging.ILogger{JwtDemo.Controllers.TestController})">
+            <summary>
+            Init
+            </summary>
+        </member>
         <member name="M:JwtDemo.Controllers.TestController.SignIn(JwtDemo.Models.Parameter.LoginParameter)">
             <summary>
             登入
@@ -15,6 +25,27 @@
             <summary>
             查詢（登入後才能查詢呦！）
             </summary>
+            <returns></returns>
+            <response code="200">回傳使用者資訊</response>
+            <response code="401">尚未登入</response>  
+        </member>
+        <member name="T:JwtDemo.Helpers.JwtHelper">
+            <summary>
+            JWT 工具
+            </summary>
+        </member>
+        <member name="M:JwtDemo.Helpers.JwtHelper.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:JwtDemo.Helpers.JwtHelper"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="M:JwtDemo.Helpers.JwtHelper.GenerateToken(System.String,System.Int32)">
+            <summary>
+            Generates the token.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <param name="expireMinutes">The expire minutes.</param>
             <returns></returns>
         </member>
         <member name="T:JwtDemo.Models.Parameter.LoginParameter">

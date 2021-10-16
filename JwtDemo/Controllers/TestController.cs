@@ -6,15 +6,21 @@ using Microsoft.Extensions.Logging;
 
 namespace JwtDemo.Controllers
 {
+    /// <summary>
+    /// 測試站台
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class TestController : ControllerBase
     {
-        private readonly JwtHelpers _jwtHelper;
+        private readonly Helpers.JwtHelper _jwtHelper;
         private readonly ILogger<TestController> _logger;
 
+        /// <summary>
+        /// Init
+        /// </summary>
         public TestController(
-            JwtHelpers jwtHelpers,
+            Helpers.JwtHelper jwtHelpers,
             ILogger<TestController> logger)
         {
             this._jwtHelper = jwtHelpers;
@@ -41,6 +47,8 @@ namespace JwtDemo.Controllers
         /// 查詢（登入後才能查詢呦！）
         /// </summary>
         /// <returns></returns>
+        /// <response code="200">回傳使用者資訊</response>
+        /// <response code="401">尚未登入</response>  
         [HttpGet]
         [Authorize]
         public string Get() => User.Identity.Name;

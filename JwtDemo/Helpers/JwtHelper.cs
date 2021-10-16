@@ -8,17 +8,30 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace JwtDemo.Helpers
 {
-    public class JwtHelpers
+    /// <summary>
+    /// JWT 工具
+    /// </summary>
+    public class JwtHelper
     {
         // 參考資料: https://blog.miniasp.com/post/2019/12/16/How-to-use-JWT-token-based-auth-in-aspnet-core-31
 
         private readonly IConfiguration Configuration;
 
-        public JwtHelpers(IConfiguration configuration)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JwtHelper"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        public JwtHelper(IConfiguration configuration)
         {
             this.Configuration = configuration;
         }
 
+        /// <summary>
+        /// Generates the token.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="expireMinutes">The expire minutes.</param>
+        /// <returns></returns>
         public string GenerateToken(string userName, int expireMinutes = 1440)
         {
             var issuer = Configuration.GetValue<string>("JwtSettings:Issuer");
